@@ -1,6 +1,6 @@
 
 // @ts-ignore
-type IPictureRecord = {
+interface IPictureRecord {
     iiifbaseuri: string,
     width: number,
     caption: string,
@@ -15,8 +15,4 @@ type IPictureRecord = {
     height: number,
     baseimageurl: string,
     idsid: number
-}
-
-type IPictures = {
-    pictures: Array<IPictureRecord>
 }

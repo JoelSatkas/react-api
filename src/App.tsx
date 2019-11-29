@@ -1,8 +1,7 @@
 import * as React from 'react';
 import './App.css';
-import './components/ImageCard'
-import ImageCard from "./components/ImageCard";
-
+import './components/ImageCards'
+import ImageCards from "./components/ImageCards";
 
 let apiURL = `https://api.harvardartmuseums.org`;
 let pictureResource = `image`;
@@ -27,8 +26,7 @@ class App extends React.Component {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <div>
-                Hello
-                <ImageCard pictures={this.state.pictures}/>
+                <ImageCards pictures={this.state.pictures}/>
             </div>
         );
     }
