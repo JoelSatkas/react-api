@@ -1,17 +1,21 @@
 import * as React from 'react';
-import IPictureRecord from '../App';
 
-class ImageCard extends React.Component<IPictureRecord> {
-    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        return (
-            <div>
-                <p>
-                    Image Card
-                    {this.props.}
-                </p>
-            </div>
-        );
-    }
-}
+const ImageCard = (props: any) => {
+
+    return (
+        <div>
+            <h1>Image List</h1>
+            {props.pictures.map((picture: IPictureRecord) => (
+                <div>
+                    <div>
+                        <h5>{picture.copyright}</h5>
+                        <img className="images-class" src={picture.baseimageurl} />
+                        <p>{picture.date}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
 
 export default ImageCard;
