@@ -7,9 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import ImageCardItemDetails from "./EditImageCardDialog";
+import EditImageCardDialog from "./EditImageCardDialog";
 import {useState} from "react";
 import {toast} from "react-toastify";
+import DetailsImageCardDialog from "./DetailsImageCardDialog";
 
 type ImageCardItemProp = {
     picture:IPictureRecord,
@@ -26,29 +27,33 @@ const useStyles = makeStyles({
 });
 
 const ImageCardItem = (props: ImageCardItemProp) => {
-    const [showPictureDetails, setShowPictureDetails] = useState(false);
+    const [showPictureEditDialog, setShowPictureEditDialog] = useState(false);
+    const [showPictureDetailsDialog, setShowPictureDetailsDialog] = useState(false);
 
     const classes = useStyles();
 
     const showImageDetails = () => {
-        console.log(`image was clicked`);
+        setShowPictureDetailsDialog(true);
     };
 
     const showImageEdit = () => {
-        console.log(`edit button clicked`);
-        setShowPictureDetails(true);
+        setShowPictureEditDialog(true);
     };
 
     const deleteImage = () => {
         props.handleDelete(props.picture.id);
     };
 
-    const hideImageDetails = () => {
-        setShowPictureDetails(false);
+    const hideImageEditDialog = () => {
+        setShowPictureEditDialog(false);
+    };
+
+    const hideImageDetailsDialog = () => {
+        setShowPictureDetailsDialog(false);
     };
 
     const saveImageDetails = () => {
-        setShowPictureDetails(false);
+        setShowPictureEditDialog(false);
         toast.error("This is just a demo! Did not save", {
             position: toast.POSITION.BOTTOM_LEFT
         });
@@ -81,7 +86,8 @@ const ImageCardItem = (props: ImageCardItemProp) => {
                     </Button>
                 </CardActions>
             </Card>
-            {showPictureDetails && <ImageCardItemDetails picture={props.picture} handleHide={hideImageDetails} handleSave={saveImageDetails} />}
+            {showPictureEditDialog && <EditImageCardDialog picture={props.picture} handleHide={hideImageEditDialog} handleSave={saveImageDetails} />}
+            {showPictureDetailsDialog && <DetailsImageCardDialog picture={props.picture} handleHide={hideImageDetailsDialog}/>}
         </div>
     );
 };

@@ -7,13 +7,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-type ImageCardItemDetailsProps = {
+type DetailsImageCardDialogProps = {
     picture: IPictureRecord,
-    handleHide: () => void,
-    handleSave: () => void
+    handleHide: () => void
 }
 
-const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
+const DetailsImageCardDialog = (props: DetailsImageCardDialogProps) => {
     return (
         <div>
             <Dialog open={true} aria-labelledby="form-dialog-title">
@@ -27,6 +26,7 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                         margin="dense"
                         id="copyright"
                         label="Copy Right"
+                        disabled
                         fullWidth
                         defaultValue={props.picture.copyright}
                     />
@@ -35,6 +35,7 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                         margin="dense"
                         id="caption"
                         label="Caption"
+                        disabled
                         fullWidth
                         defaultValue={props.picture.caption}
                     />
@@ -43,6 +44,7 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                         margin="dense"
                         id="renditionnumber"
                         label="Rendition Number"
+                        disabled
                         fullWidth
                         defaultValue={props.picture.renditionnumber}
                     />
@@ -51,6 +53,7 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                         margin="dense"
                         id="fileid"
                         label="File ID"
+                        disabled
                         fullWidth
                         defaultValue={props.picture.fileid}
                     />
@@ -59,13 +62,10 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                     <Button onClick={props.handleHide} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={props.handleSave} color="primary">
-                        save
-                    </Button>
                 </DialogActions>
             </Dialog>
         </div>
     );
 };
 
-export default EditImageCardDialog
+export default DetailsImageCardDialog
