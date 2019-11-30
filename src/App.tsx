@@ -13,6 +13,10 @@ class App extends React.Component {
         pictures: []
     };
 
+    deleteImage = (id: number) => {
+        this.setState({pictures: this.state.pictures.filter( (picture: IPictureRecord) => {return picture.id !== id})});
+    };
+
     componentDidMount = () => {
         fetch(`${apiURL}/${pictureResource}?apikey=${apiKey}`)
             .then(res => res.json())
@@ -26,7 +30,7 @@ class App extends React.Component {
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (
             <div>
-                <ImageCards pictures={this.state.pictures}/>
+                <ImageCards pictures={this.state.pictures} deleteImage={this.deleteImage}/>
             </div>
         );
     }
