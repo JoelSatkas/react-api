@@ -1,15 +1,15 @@
 import * as React from 'react';
-import ImageCardItem from './ImageCardItem';
+import ImageCardItem from '../ImageCardItem/ImageCardItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {Button} from "@material-ui/core";
 import {useState} from "react";
-import AddNewImageCardDialog from "./AddNewImageCardDialog";
+import AddNewImageCardDialog from "../AddNewImageCardDialog/AddNewImageCardDialog";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {gql} from "apollo-boost";
 import {useApolloClient, useQuery} from "@apollo/react-hooks";
-import SearchArtworkInput from "./SearchArtworkInput";
+import SearchArtworkInput from "../SearchArtworkInput/SearchArtworkInput";
 
 const useStyles = makeStyles(theme => ({
     root: {

@@ -7,10 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import EditImageCardDialog from "./EditImageCardDialog";
+import EditImageCardDialog from "../EditImageCardDialog/EditImageCardDialog";
 import {useState} from "react";
 import {toast} from "react-toastify";
-import DetailsImageCardDialog from "./DetailsImageCardDialog";
+import DetailsImageCardDialog from "../DetailsImageCardDialog/DetailsImageCardDialog";
 
 type ImageCardItemProp = {
     picture:IGraphQLArtwork,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
-import './components/ImageCards'
-import ImageCards from './components/ImageCards';
+import './components/ImageCards/ImageCards'
+import ImageCards from './components/ImageCards/ImageCards';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
