@@ -17,29 +17,11 @@ const DetailsImageCardDialog = (props: DetailsImageCardDialogProps) => {
     return (
         <div>
             <Dialog open={true} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="form-dialog-title">{props.picture.title} - {props.artist.name}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
+                    <DialogContentText align={"center"}>
                         <img className="images-class" src={props.picture.imageUrl} />
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="title"
-                        label="Title"
-                        disabled
-                        fullWidth
-                        defaultValue={props.picture.title}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="artist"
-                        label="Artist"
-                        disabled
-                        fullWidth
-                        defaultValue={props.artist.name}
-                    />
                     <TextField
                         autoFocus
                         margin="dense"

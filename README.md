@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -13,17 +11,21 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Launches Jest in the interactive watch mode.<br />
 
-### `npm run build`
+--------------
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is my first time using React and its ecosystem.
 
 ### Extras I would like to work on:
 
 * Redux and state management
-* 
+* Service workers, offline mode and local storage.
+* More advanced features such as search, larger images or zoom, fast image selection, etc.
+
+### Technologies and Libraries used:
+
+* Material UI was used to display the cards and dialogs in an attempts to get a clean and modern look.
+* React Apollo was used as the library to create GraphQL queries and fetch the images and their data.
+* Jest was the testing framework used to run tests.
+* React Toastify was a library used to display toaster messages.
+* Create React App was used to bootstrap the project.
+* TypeScript

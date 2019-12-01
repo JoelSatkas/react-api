@@ -18,9 +18,8 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
     return (
         <div>
             <Dialog open={true} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
+                    <DialogContentText align={"center"}>
                         <img className="images-class" src={props.picture.imageUrl} />
                     </DialogContentText>
                     <TextField

@@ -105,7 +105,7 @@ const ImageCards = () => {
             <div>
                 <Grid container className={classes.root} spacing={3}>
                     <Grid item xs={12}>
-                        <Grid container justify="center" spacing={3}>
+                        <Grid container justify="center" spacing={2}>
                             {data.popular_artists.artists.map((artist: any) => {
                                 return artist.artworks.map((artWork: IGraphQLArtwork) => (
                                     <Grid key={artWork.id} item>
