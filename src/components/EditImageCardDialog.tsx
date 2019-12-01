@@ -8,7 +8,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 type ImageCardItemDetailsProps = {
-    picture: IPictureRecord,
+    picture: IGraphQLArtwork,
+    artist: IGraphQLArtist,
     handleHide: () => void,
     handleSave: () => void
 }
@@ -20,31 +21,39 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                 <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        <img className="images-class" src={props.picture.baseimageurl} />
+                        <img className="images-class" src={props.picture.imageUrl} />
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="copyright"
-                        label="Copy Right"
+                        id="Title"
+                        label="Title"
                         fullWidth
-                        defaultValue={props.picture.copyright}
+                        defaultValue={props.picture.title}
                     />
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="caption"
-                        label="Caption"
+                        id="artist"
+                        label="Artist"
                         fullWidth
-                        defaultValue={props.picture.caption}
+                        defaultValue={props.artist.name}
                     />
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="renditionnumber"
-                        label="Rendition Number"
+                        id="description"
+                        label="Description"
                         fullWidth
-                        defaultValue={props.picture.renditionnumber}
+                        defaultValue={props.picture.description}
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="date"
+                        label="Date"
+                        fullWidth
+                        defaultValue={props.picture.date}
                     />
                     <TextField
                         autoFocus
@@ -52,7 +61,7 @@ const EditImageCardDialog = (props: ImageCardItemDetailsProps) => {
                         id="fileid"
                         label="File ID"
                         fullWidth
-                        defaultValue={props.picture.fileid}
+                        defaultValue={props.picture.id}
                     />
                 </DialogContent>
                 <DialogActions>

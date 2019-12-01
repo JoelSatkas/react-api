@@ -13,8 +13,9 @@ import {toast} from "react-toastify";
 import DetailsImageCardDialog from "./DetailsImageCardDialog";
 
 type ImageCardItemProp = {
-    picture:IPictureRecord,
-    handleDelete: (id: number) => void
+    picture:IGraphQLArtwork,
+    artist: IGraphQLArtist,
+    handleDelete: (id: string) => void
 }
 
 const useStyles = makeStyles({
@@ -65,15 +66,18 @@ const ImageCardItem = (props: ImageCardItemProp) => {
                 <CardActionArea onClick={showImageDetails}>
                     <CardMedia
                         className={classes.media}
-                        image={props.picture.baseimageurl}
-                        title={props.picture.caption}
+                        image={props.picture.imageUrl}
+                        title={props.picture.title}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {props.picture.renditionnumber}
+                            {props.picture.title}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            © {props.picture.copyright} - {props.picture.date}
+                            Artist: {props.artist.name} ({props.artist.nationality})
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {props.picture.date}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -86,8 +90,8 @@ const ImageCardItem = (props: ImageCardItemProp) => {
                     </Button>
                 </CardActions>
             </Card>
-            {showPictureEditDialog && <EditImageCardDialog picture={props.picture} handleHide={hideImageEditDialog} handleSave={saveImageDetails} />}
-            {showPictureDetailsDialog && <DetailsImageCardDialog picture={props.picture} handleHide={hideImageDetailsDialog}/>}
+            {showPictureEditDialog && <EditImageCardDialog picture={props.picture} artist={props.artist} handleHide={hideImageEditDialog} handleSave={saveImageDetails} />}
+            {showPictureDetailsDialog && <DetailsImageCardDialog picture={props.picture} artist={props.artist} handleHide={hideImageDetailsDialog}/>}
         </div>
     );
 };

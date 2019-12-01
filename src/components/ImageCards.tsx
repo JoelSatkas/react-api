@@ -7,11 +7,9 @@ import {useState} from "react";
 import AddNewImageCardDialog from "./AddNewImageCardDialog";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-type ImageCardsProp = {
-    pictures: Array<IPictureRecord>,
-    deleteImage: (imageId: number) => void
-}
+import {gql} from "apollo-boost";
+import {useApolloClient, useQuery} from "@apollo/react-hooks";
+import SearchArtworkInput from "./SearchArtworkInput";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,8 +24,28 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ImageCards = (props: ImageCardsProp) => {
+const GET_IMAGES_QUERY = gql`
+    {
+        popular_artists(size: 5) {
+            artists {
+                name
+                nationality
+                artworks (size: 2) {
+                    id
+                    date
+                    imageUrl
+                    title
+                    description
+                }
+            }
+        }
+    }
+`;
+
+const ImageCards = () => {
     const [showAddDialog, setShowAddDialog] = useState(false);
+    let loading: boolean, error: any | undefined, data: any | undefined;
+    ({loading, error, data} = useQuery(GET_IMAGES_QUERY));
 
     const classes = useStyles();
 
@@ -46,23 +64,55 @@ const ImageCards = (props: ImageCardsProp) => {
         });
     };
 
-    const handleImageDelete = (id: number) => {
+    const handleImageDelete = (id: string) => {
         console.log("Delete image with id: " + id);
-        props.deleteImage(id);
+
+        // //TODO Figure out how to use state instead of this.
+        // data = {popular_artists: {artists: data.popular_artists.artists.map((artist: IGraphQLArtist) => {
+        //     return artist.artworks.filter((artwork: IGraphQLArtwork) => {
+        //         return artwork.id !== id;
+        //     });
+        // })}};
+
+        toast.error("This is just a demo! Did not delete", {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
     };
 
-    return (
+    const searchForArtWork = (searchQuery: string) => {
+        // const client = useApolloClient();
+        // const data = client.query({
+        //     query: gql``
+        // });
+
+    };
+
+    if (error) return (<div>
+        <p>
+            Something went wrong with the server.... Please try again later.
+        </p>
+    </div>);
+
+    if (data === undefined) return (<div>
+        <p>
+            Loading...
+        </p>
+    </div>);
+    else return (
         <div>
-            <h1 style={{textAlign:"center"}}>Image List</h1>
+            <h1 style={{textAlign:"center"}}>Popular Artists and their work</h1>
+            <SearchArtworkInput search={searchForArtWork}/>
             <div>
                 <Grid container className={classes.root} spacing={3}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={3}>
-                            {props.pictures.map((picture: IPictureRecord) => (
-                                <Grid key={picture.id} item>
-                                    <ImageCardItem key={picture.id} picture={picture} handleDelete={handleImageDelete} />
-                                </Grid>
-                            ))}
+                            {data.popular_artists.artists.map((artist: any) => {
+                                return artist.artworks.map((artWork: IGraphQLArtwork) => (
+                                    <Grid key={artWork.id} item>
+                                        <ImageCardItem key={artWork.id} picture={artWork} artist={artist} handleDelete={handleImageDelete} />
+                                    </Grid>
+                                ));
+                            })}
                         </Grid>
                     </Grid>
                 </Grid>

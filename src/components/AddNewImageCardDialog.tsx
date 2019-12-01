@@ -15,7 +15,7 @@ const AddNewImageCardDialog = (props: AddNewImageCardDialogProps) => {
     return (
         <div>
             <Dialog open={true} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="form-dialog-title">Add New Artwork</DialogTitle>
                 <DialogContent>
                     <TextField
                         autoFocus
@@ -27,29 +27,29 @@ const AddNewImageCardDialog = (props: AddNewImageCardDialogProps) => {
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="copyright"
-                        label="Copy Right"
+                        id="title"
+                        label="Title"
                         fullWidth
                     />
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="caption"
-                        label="Caption"
+                        id="artistname"
+                        label="Artist Name"
                         fullWidth
                     />
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="renditionnumber"
-                        label="Rendition Number"
+                        id="description"
+                        label="Description"
                         fullWidth
                     />
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="fileid"
-                        label="File ID"
+                        id="date"
+                        label="Date"
                         fullWidth
                     />
                 </DialogContent>
