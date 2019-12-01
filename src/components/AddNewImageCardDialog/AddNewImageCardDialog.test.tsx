@@ -17,7 +17,7 @@ describe('AddNewImageCardDialog', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
-
+    //More
 });
 
 

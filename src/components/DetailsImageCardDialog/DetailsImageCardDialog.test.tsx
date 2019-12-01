@@ -27,7 +27,7 @@ describe('DetailsImageCardDialog', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
-
+//More
 });
 
 
