@@ -5,6 +5,7 @@ import ImageCards from './components/ImageCards/ImageCards';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
+//GraphQL end point for artsy. Art related data.
 const graphQLURL = 'https://metaphysics-production.artsy.net/';
 
 const client = new ApolloClient({

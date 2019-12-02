@@ -7,10 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import EditImageCardDialog from "../EditImageCardDialog/EditImageCardDialog";
+import EditImageCardDialog from "../DialogComponents/EditImageCardDialog/EditImageCardDialog";
 import {useState} from "react";
 import {toast} from "react-toastify";
-import DetailsImageCardDialog from "../DetailsImageCardDialog/DetailsImageCardDialog";
+import DetailsImageCardDialog from "../DialogComponents/DetailsImageCardDialog/DetailsImageCardDialog";
 
 type ImageCardItemProp = {
     picture:IGraphQLArtwork,
@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     },
 });
 
+//Component responsible for managing the cards content.
 const ImageCardItem = (props: ImageCardItemProp) => {
     const [showPictureEditDialog, setShowPictureEditDialog] = useState(false);
     const [showPictureDetailsDialog, setShowPictureDetailsDialog] = useState(false);
@@ -90,8 +91,8 @@ const ImageCardItem = (props: ImageCardItemProp) => {
                     </Button>
                 </CardActions>
             </Card>
-            {showPictureEditDialog && <EditImageCardDialog picture={props.picture} artist={props.artist} handleHide={hideImageEditDialog} handleSave={saveImageDetails} />}
-            {showPictureDetailsDialog && <DetailsImageCardDialog picture={props.picture} artist={props.artist} handleHide={hideImageDetailsDialog}/>}
+            <EditImageCardDialog picture={props.picture} artist={props.artist} handleHide={hideImageEditDialog} handleSave={saveImageDetails} visible={showPictureEditDialog} />
+            <DetailsImageCardDialog picture={props.picture} artist={props.artist} handleHide={hideImageDetailsDialog} visible={showPictureDetailsDialog}/>
         </div>
     );
 };

@@ -9,7 +9,11 @@ describe('App', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-//more
+/*
+    Snapshot testing was not implemented because the main pages consists of popular artists and their
+    artwork. Because of this there can be new artists that become popular and end up in the application.
+    A snapshot tests would then fail because the content is no longer the same.
+ */
 });
 
 

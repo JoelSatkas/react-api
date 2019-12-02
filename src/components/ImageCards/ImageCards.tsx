@@ -4,11 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {Button} from "@material-ui/core";
 import {useState} from "react";
-import AddNewImageCardDialog from "../AddNewImageCardDialog/AddNewImageCardDialog";
+import AddNewImageCardDialog from "../DialogComponents/AddNewImageCardDialog/AddNewImageCardDialog";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {gql} from "apollo-boost";
-import {useApolloClient, useQuery} from "@apollo/react-hooks";
+import {useQuery} from "@apollo/react-hooks";
 import SearchArtworkInput from "../SearchArtworkInput/SearchArtworkInput";
 
 const useStyles = makeStyles(theme => ({
@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+//Query gets the a number of popular artists and a sample of their work
 const GET_IMAGES_QUERY = gql`
     {
         popular_artists(size: 5) {
@@ -42,10 +43,13 @@ const GET_IMAGES_QUERY = gql`
     }
 `;
 
+// Responsible for managing the cards
 const ImageCards = () => {
+    //Dialog component for adding new card
     const [showAddDialog, setShowAddDialog] = useState(false);
     let loading: boolean, error: any | undefined, data: any | undefined;
     ({loading, error, data} = useQuery(GET_IMAGES_QUERY));
+    const searchPlaceHolder = 'Search Art Work';
 
     const classes = useStyles();
 
@@ -58,6 +62,7 @@ const ImageCards = () => {
     };
 
     const uploadNewItem = () => {
+        //Code to add it to state.
         setShowAddDialog(false);
         toast.error("This is just a demo! Did not submit", {
             position: toast.POSITION.BOTTOM_LEFT
@@ -65,7 +70,7 @@ const ImageCards = () => {
     };
 
     const handleImageDelete = (id: string) => {
-        console.log("Delete image with id: " + id);
+        //Code to remove it from state
 
         // //TODO Figure out how to use state instead of this.
         // data = {popular_artists: {artists: data.popular_artists.artists.map((artist: IGraphQLArtist) => {
@@ -79,12 +84,15 @@ const ImageCards = () => {
         });
     };
 
-    const searchForArtWork = (searchQuery: string) => {
+    const searchForArtWork = (searchTerm: string) => {
         // const client = useApolloClient();
         // const data = client.query({
         //     query: gql``
         // });
 
+        toast.error("API seems to be broken.", {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
     };
 
     if (error) return (<div>
@@ -101,7 +109,7 @@ const ImageCards = () => {
     else return (
         <div>
             <h1 style={{textAlign:"center"}}>Popular Artists and their work</h1>
-            <SearchArtworkInput search={searchForArtWork}/>
+            <SearchArtworkInput search={searchForArtWork} placeHolder={searchPlaceHolder} />
             <div>
                 <Grid container className={classes.root} spacing={3}>
                     <Grid item xs={12}>
@@ -120,7 +128,7 @@ const ImageCards = () => {
             <Button className='add-button' variant="contained" onClick={addButtonClicked}>
                 Add New Item
             </Button>
-            {showAddDialog && <AddNewImageCardDialog handleSave={uploadNewItem} handleHide={hideAddDialog} />}
+            <AddNewImageCardDialog handleSave={uploadNewItem} handleHide={hideAddDialog} visible={showAddDialog} />
             <ToastContainer />
         </div>
     );

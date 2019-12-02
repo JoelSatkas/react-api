@@ -1,5 +1,7 @@
 ## Available Scripts
 
+Run pm install first!
+<br>
 In the project directory, you can run:
 
 ### `npm start`
@@ -20,6 +22,8 @@ This is my first time using React and its ecosystem.
 * Redux and state management
 * Service workers, offline mode and local storage.
 * More advanced features such as search, larger images or zoom, fast image selection, etc.
+* Better testing practices. Explore snapshot testing, coverage testing.
+* Using component repositories such as Bit or Storybook. 
 
 ### Technologies and Libraries used:
 
