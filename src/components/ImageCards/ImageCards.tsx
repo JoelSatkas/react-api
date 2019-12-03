@@ -105,7 +105,7 @@ const ImageCards = () => {
         // const client = useApolloClient();
         // const data = client.query(FIND_IMAGES_QUERY, {variables: {keyword: searchTerm}});
 
-        toast.error("API seems to be broken.", {
+        toast.error("API seems to not like call.", {
             position: toast.POSITION.BOTTOM_LEFT
         });
     };

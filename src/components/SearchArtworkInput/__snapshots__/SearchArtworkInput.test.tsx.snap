@@ -10,10 +10,10 @@ exports[`SearchArtworkInput snapshot renders 1`] = `
   }
 >
   <form
-    className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-177 MuiPaper-rounded"
+    className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-176 MuiPaper-rounded"
   >
     <div
-      className="MuiInputBase-root makeStyles-input-178"
+      className="MuiInputBase-root makeStyles-input-177"
       onClick={[Function]}
     >
       <input
@@ -29,7 +29,7 @@ exports[`SearchArtworkInput snapshot renders 1`] = `
     </div>
     <button
       aria-label="search"
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-iconButton-179"
+      className="MuiButtonBase-root MuiIconButton-root makeStyles-iconButton-178"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}

@@ -29,10 +29,12 @@ const artist: IGraphQLArtist = {
     nationality: ""
 };
 
+const visible: boolean = true;
+
 describe('EditImageCardDialog', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<EditImageCardDialog artist={artist} picture={picture} handleHide={handleHide} handleSave={handleSave} />, div);
+        ReactDOM.render(<EditImageCardDialog visible={visible} artist={artist} picture={picture} handleHide={handleHide} handleSave={handleSave} />, div);
         ReactDOM.unmountComponentAtNode(div);
     });
 
@@ -41,7 +43,7 @@ describe('EditImageCardDialog', () => {
         const handleHideMock = jest.fn();
 
         const output = mount(
-            <EditImageCardDialog artist={artist} picture={picture} handleHide={handleHideMock} handleSave={handleSaveMock} />
+            <EditImageCardDialog visible={visible} artist={artist} picture={picture} handleHide={handleHideMock} handleSave={handleSaveMock} />
         );
 
         output.find(Button).first().simulate('click');

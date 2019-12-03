@@ -1,6 +1,6 @@
 ## Available Scripts
 
-Run pm install first!
+Run npm install first!
 <br>
 In the project directory, you can run:
 
@@ -37,3 +37,10 @@ This is my first time using React and its ecosystem.
 * Create React App was used to bootstrap the project.
 * react-styleguidist to create documentation.
 * TypeScript
+
+#### Extra feature
+
+I wanted to create a search feature that would query the APIs elastic search engine and display 
+new images that match the query dynamically but I kept getting errors from their API and couldn't
+figure it out. This is my first time using GraphQL so there might be something im not aware of but I ran out of time
+and dont have any other feature.  
