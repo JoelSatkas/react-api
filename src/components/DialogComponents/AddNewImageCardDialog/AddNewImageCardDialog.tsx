@@ -7,12 +7,17 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 type AddNewImageCardDialogProps = {
+    /** Switch for displaying or hiding dialog */
     visible: boolean,
+    /** The parents method for handling hiding the component */
     handleHide: () => void,
+    /** The parents method for handling saving the component */
     handleSave: () => void
 }
 
-//Basic dialog component for adding new card.
+/**
+ *  Basic dialog component for adding new card.
+ */
 const AddNewImageCardDialog = (props: AddNewImageCardDialogProps) => {
     return (
         <div>

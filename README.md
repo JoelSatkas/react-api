@@ -13,6 +13,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Launches Jest in the interactive watch mode.<br />
 
+### Documentation 
+Docs available in styleguide/index.html generated using [react-styleguidist](https://github.com/styleguidist/react-styleguidist)
+
 --------------
 
 This is my first time using React and its ecosystem.
@@ -32,4 +35,5 @@ This is my first time using React and its ecosystem.
 * Jest was the testing framework used to run tests.
 * React Toastify was a library used to display toaster messages.
 * Create React App was used to bootstrap the project.
+* react-styleguidist to create documentation.
 * TypeScript

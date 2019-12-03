@@ -15,10 +15,12 @@ const handleSave = () => {
 
 };
 
+const visible = true;
+
 describe('AddNewImageCardDialog', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<AddNewImageCardDialog handleHide={handleHide} handleSave={handleSave} />, div);
+        ReactDOM.render(<AddNewImageCardDialog handleHide={handleHide} handleSave={handleSave} visible={visible} />, div);
         ReactDOM.unmountComponentAtNode(div);
     });
 
@@ -27,7 +29,7 @@ describe('AddNewImageCardDialog', () => {
         const handleHideMock = jest.fn();
 
         const output = mount(
-            <AddNewImageCardDialog handleHide={handleHideMock} handleSave={handleSaveMock} />
+            <AddNewImageCardDialog handleHide={handleHideMock} handleSave={handleSaveMock} visible={visible} />
         );
 
         output.find(Button).first().simulate('click');

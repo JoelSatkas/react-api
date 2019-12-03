@@ -13,8 +13,11 @@ import {toast} from "react-toastify";
 import DetailsImageCardDialog from "../DialogComponents/DetailsImageCardDialog/DetailsImageCardDialog";
 
 type ImageCardItemProp = {
+    /** The picture data to display */
     picture:IGraphQLArtwork,
+    /** The data of the artist responsible for the picture */
     artist: IGraphQLArtist,
+    /** Parents implementation of the handling deletion of card */
     handleDelete: (id: string) => void
 }
 
@@ -27,7 +30,9 @@ const useStyles = makeStyles({
     },
 });
 
-//Component responsible for managing the cards content.
+/**
+ *  Component responsible for managing the cards content.
+ */
 const ImageCardItem = (props: ImageCardItemProp) => {
     const [showPictureEditDialog, setShowPictureEditDialog] = useState(false);
     const [showPictureDetailsDialog, setShowPictureDetailsDialog] = useState(false);

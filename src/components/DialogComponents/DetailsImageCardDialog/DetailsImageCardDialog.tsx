@@ -8,13 +8,19 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 type DetailsImageCardDialogProps = {
+    /** Switch for displaying or hiding dialog */
     visible: boolean,
+    /** The picture data to display */
     picture: IGraphQLArtwork,
+    /** The data of the artist responsible for the picture */
     artist: IGraphQLArtist,
+    /** The parents method for handling hiding the component */
     handleHide: () => void
 }
 
-//Basic dialog component for viewing details of the cards data.
+/**
+ *  Basic dialog component for viewing details of the cards data.
+ */
 const DetailsImageCardDialog = (props: DetailsImageCardDialogProps) => {
     return (
         <div>

@@ -24,26 +24,43 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-//Query gets the a number of popular artists and a sample of their work
-const GET_IMAGES_QUERY = gql`
-    {
-        popular_artists(size: 5) {
-            artists {
-                name
-                nationality
-                artworks (size: 2) {
-                    id
-                    date
-                    imageUrl
-                    title
-                    description
-                }
+/**
+ *  Query gets the a number of popular artists and a sample of their work
+ */
+const GET_IMAGES_QUERY = gql`{
+    popular_artists(size: 5) {
+        artists {
+            name
+            nationality
+            artworks (size: 2) {
+                id
+                date
+                imageUrl
+                title
+                description
             }
         }
     }
-`;
+}`;
 
-// Responsible for managing the cards
+const FIND_IMAGES_QUERY = gql`
+    query Filter_artworks($keyword: string) {
+        filter_artworks(keyword: $keyword) {
+            __id
+            hits {
+              id
+              imageUrl
+              image_title
+              artist {
+                name
+              }
+            }
+        }
+    }`;
+
+/**
+ *  Responsible for managing the cards
+ */
 const ImageCards = () => {
     //Dialog component for adding new card
     const [showAddDialog, setShowAddDialog] = useState(false);
@@ -86,9 +103,7 @@ const ImageCards = () => {
 
     const searchForArtWork = (searchTerm: string) => {
         // const client = useApolloClient();
-        // const data = client.query({
-        //     query: gql``
-        // });
+        // const data = client.query(FIND_IMAGES_QUERY, {variables: {keyword: searchTerm}});
 
         toast.error("API seems to be broken.", {
             position: toast.POSITION.BOTTOM_LEFT

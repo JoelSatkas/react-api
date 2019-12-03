@@ -29,11 +29,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type SearchArtworkInputProps = {
+    /** Placeholder to display in search input */
     placeHolder: string;
+    /** Parents function for handling the search input */
     search: (input: string) => void
 }
 
-//Simple search input component that calls parent callback on submission of search query.
+/**
+ *  Simple search input component that calls parent callback on submission of search query.
+ *  @example ./SearchArtworkInput.md
+ */
 const SearchArtworkInput = (props: SearchArtworkInputProps) => {
     const classes = useStyles();
 
